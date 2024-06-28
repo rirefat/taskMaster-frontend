@@ -1,10 +1,10 @@
-import { Button } from "./components/ui/button";
+import Todos from "./pages/Todos";
 
 const App = () => {
   return (
     <div>
-    <Button>Click me</Button>
-  </div>
+     <Todos/>
+    </div>
   );
 };
 
