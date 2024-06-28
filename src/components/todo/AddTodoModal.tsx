@@ -20,7 +20,7 @@ export function AddTodoModal() {
 
   const addTask = (event: FormEvent) => {
     event.preventDefault();
-    console.log(title, description)
+    console.log({ title, description, priority })
   }
 
   return (
@@ -58,7 +58,7 @@ export function AddTodoModal() {
             <div className="grid grid-cols-4 items-center gap-4">
               <Label htmlFor="priority" className="text-right">Set Priority</Label>
               {/* <Input id="priority" className="col-span-3" /> */}
-              <select name="priority" id="priority" className="col-span-3 border p-2 rounded-md" >
+              <select onChange={(event) => setPriority(event.target.value)} name="priority" id="priority" className="col-span-3 border p-2 rounded-md" >
                 <option value="high">High</option>
                 <option value="medium">Medium</option>
                 <option value="low">Low</option>
