@@ -1,18 +1,24 @@
 // import EmptyCard from "./EmptyCard";
+
+import { AddTodoModal } from "./AddTodoModal";
 import TodoCard from "./TodoCard";
+import TodoFilter from "./TodoFilter";
 
 const TodoContainer = () => {
     return (
         <div>
-            <div>
-                <button>Add Task</button>
-                <button>Filter</button>
+            <div className="flex justify-between mb-4 ">
+                <AddTodoModal/>
+                <span className="text-xl">Filter</span>
+                <TodoFilter/>
             </div>
 
-            <div className="bg-red-300 p-2 w-full h-full rounded-md space-y-3 shadow-lg">
-                <TodoCard/>
-                <TodoCard/>
-                {/* <EmptyCard/> */}
+            <div className="bg-primary-gradient w-full h-full rounded-md shadow-lg p-[5px]">
+                <div className="bg-white p-5 w-full h-full rounded-md space-y-3 ">
+                    <TodoCard />
+                    <TodoCard />
+                    {/* <EmptyCard/> */}
+                </div>
             </div>
         </div>
     );
