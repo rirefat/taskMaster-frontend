@@ -9,7 +9,6 @@ const TodoContainer = () => {
         <div>
             <div className="flex justify-between mb-4 ">
                 <AddTodoModal/>
-                <span className="text-xl">Filter</span>
                 <TodoFilter/>
             </div>
 
