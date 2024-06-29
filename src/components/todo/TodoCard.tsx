@@ -6,8 +6,8 @@ const TodoCard = () => {
         <div className="bg-white rounded-md flex justify-between items-center p-3 border">
             <input type="checkbox" name="" id="" />
             <p className="font-semibold">Task title</p>
-            <p>time</p>
             <p>desc</p>
+            <p>time</p>
 
             <div className="space-x-5">
                 <Button className="delete-btn bg-red-500">
