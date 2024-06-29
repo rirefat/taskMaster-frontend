@@ -19,11 +19,13 @@ export function AddTodoModal() {
   const [title, setTitle] = useState('');
   const [description, setDescription] = useState('');
   const [priority, setPriority] = useState('');
-  const dispatch = useAppDispatch()
+
+  const dispatch = useAppDispatch();
 
   const addTask = (event: FormEvent) => {
     event.preventDefault();
-    dispatch(addTodo({ title, description }))
+    const id = crypto.randomUUID();
+    dispatch(addTodo({ id, title, description }))
   }
 
   return (
@@ -72,8 +74,8 @@ export function AddTodoModal() {
             <DialogClose asChild>
               <Button type="submit" className="space-x-1">
                 <span>Add Now</span>
-                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" className="size-5">
-                  <path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" className="size-5">
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
                 </svg>
 
               </Button>
