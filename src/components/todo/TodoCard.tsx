@@ -23,11 +23,11 @@ const TodoCard= ({ item }: TProp) => {
 
     return (
         <div className="bg-white rounded-md flex justify-between items-center p-3 border">
-            <input onChange={toggleState} type="checkbox" name="complete" id="complete" />
-            <p className="font-semibold">{title}</p>
-            <p>{description}</p>
-            <div className=''>
-                {isCompleted ? <p className='text-white px-4 py-1 rounded-2xl bg-green-500'>Completed</p> : <p className='text-white px-4 py-1 rounded-2xl bg-red-500 '>Pending</p>}
+            <input onChange={toggleState} type="checkbox" name="complete" id="complete" className="mr-4"/>
+            <p className="font-semibold flex-1">{title}</p>
+            <p className="flex-[2]">{description}</p>
+            <div className="flex-1 text-center px-10">
+                {isCompleted ? <p className='text-white px-4 py-1 rounded-2xl bg-green-500'>Completed</p> : <p className='text-white px-4 py-1 rounded-2xl bg-red-500'>Pending</p>}
             </div>
 
             <div className="space-x-5">
