@@ -18,7 +18,7 @@ const TodoContainer = () => {
                 <div className="bg-white p-5 w-full h-full rounded-md space-y-3 ">
                     {
                         todos.length > 0 ? todos.map((item) => (
-                            <TodoCard item={item} />
+                            <TodoCard key={item.id} item={item} />
                         )) : <EmptyCard />
                     }
                 </div>
