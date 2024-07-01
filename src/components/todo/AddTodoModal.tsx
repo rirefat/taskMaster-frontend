@@ -11,6 +11,7 @@ import {
 } from "@/components/ui/dialog"
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
+import { useAddTodosMutation } from "@/redux/api/api"
 import { addTodo } from "@/redux/features/todoSlice"
 import { useAppDispatch } from "@/redux/hook"
 import { FormEvent, useState } from "react"
@@ -18,14 +19,24 @@ import { FormEvent, useState } from "react"
 export function AddTodoModal() {
   const [title, setTitle] = useState('');
   const [description, setDescription] = useState('');
-  // const [priority, setPriority] = useState('');
+  const [priority, setPriority] = useState('');
 
-  const dispatch = useAppDispatch();
+  // For local state management
+  // const dispatch = useAppDispatch();
+
+  // for server
+  const [addTodo, object] = useAddTodosMutation();
+  const { isLoading, isError, isSuccess } = object;
 
   const addTask = (event: FormEvent) => {
     event.preventDefault();
-    const id = crypto.randomUUID();
-    dispatch(addTodo({ id, title, description }))
+
+    // for local state management
+    // dispatch(addTodo({ id, title, description })) 
+
+    // for server
+    console.log({ title, description, priority , isCompleted: false})
+    addTodo({ title, description, priority , isCompleted: false})
   }
 
   return (
@@ -61,12 +72,13 @@ export function AddTodoModal() {
               />
             </div>
             <div className="grid grid-cols-4 items-center gap-4">
-              <Label htmlFor="priority" className="text-right">Set Priority</Label>
+              <Label htmlFor="priority" className="text-right">Priority</Label>
               {/* <Input id="priority" className="col-span-3" /> */}
-              <select  name="priority" id="priority" className="col-span-3 border p-2 rounded-md" >
-                <option value="high">High</option>
-                <option value="medium">Medium</option>
-                <option value="low">Low</option>
+              <select onChange={(event) => setPriority(event.target.value)} name="priority" id="priority" className="col-span-3 border p-2 rounded-md" >
+                <option value="">Set Priority</option>
+                <option value="High">High</option>
+                <option value="Medium">Medium</option>
+                <option value="Low">Low</option>
               </select>
             </div>
           </div>
