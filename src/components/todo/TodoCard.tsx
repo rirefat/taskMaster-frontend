@@ -7,14 +7,15 @@ type TTodoItem = {
     title: string;
     description: string;
     isCompleted?: boolean;
+    priority: string;
 }
-type TProp ={
+type TProp = {
     item: TTodoItem
 }
 
 
-const TodoCard= ({ item }: TProp) => {
-    const {id, title, description, isCompleted}= item;
+const TodoCard = ({ item }: TProp) => {
+    const { id, title, description, isCompleted, priority } = item;
     const dispatch = useAppDispatch();
 
     const toggleState = () => {
@@ -23,8 +24,16 @@ const TodoCard= ({ item }: TProp) => {
 
     return (
         <div className="bg-white rounded-md flex justify-between items-center p-3 border">
-            <input onChange={toggleState} type="checkbox" name="complete" id="complete" className="mr-4"/>
+            <input onChange={toggleState} type="checkbox" name="complete" id="complete" className="mr-4" />
             <p className="font-semibold flex-1">{title}</p>
+            <div className="flex justify-center items-center gap-2 flex-1 px-5">
+                <div className={`size-3 rounded-full 
+                    ${priority === "High" ? "bg-red-400"
+                        : priority === "Medium" ? "bg-green-400"
+                            : "bg-yellow-400"}
+                     `}></div>
+                <p className="font-semibold flex-1">{priority}</p>
+            </div>
             <p className="flex-[2]">{description}</p>
             <div className="flex-1 text-center px-10">
                 {isCompleted ? <p className='text-white px-4 py-1 rounded-2xl bg-green-500'>Completed</p> : <p className='text-white px-4 py-1 rounded-2xl bg-red-500'>Pending</p>}
