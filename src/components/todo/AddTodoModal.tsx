@@ -25,8 +25,9 @@ export function AddTodoModal() {
   // const dispatch = useAppDispatch();
 
   // for server
-  const [addTodo, object] = useAddTodosMutation();
-  const { isLoading, isError, isSuccess } = object;
+  // const [addTodo, object] = useAddTodosMutation();  
+  // const { isLoading, isError, isSuccess } = object;
+  const [addTodo] = useAddTodosMutation();
   
   const addTask = (event: FormEvent) => {
     event.preventDefault();
@@ -36,7 +37,6 @@ export function AddTodoModal() {
 
     // for server
     console.log({ title, description, priority , isCompleted: false});
-    console.log(isLoading, isError, isSuccess)
     addTodo({ title, description, priority , isCompleted: false})
   }
 
