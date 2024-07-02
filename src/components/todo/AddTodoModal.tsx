@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 import { Button } from "@/components/ui/button"
 import {
   Dialog,
@@ -12,8 +13,8 @@ import {
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 import { useAddTodosMutation } from "@/redux/api/api"
-// import { addTodo } from "@/redux/features/todoSlice"
-// import { useAppDispatch } from "@/redux/hook"
+import { addTodo } from "@/redux/features/todoSlice"
+import { useAppDispatch } from "@/redux/hook"
 import { FormEvent, useState } from "react"
 
 export function AddTodoModal() {
