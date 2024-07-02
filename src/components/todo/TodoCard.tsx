@@ -1,7 +1,7 @@
 import { Button } from "../ui/button";
-import { useAppDispatch } from '@/redux/hook';
-import { removeTodo } from '@/redux/features/todoSlice';
-import { useUpdateTodosMutation } from "@/redux/api/api";
+// import { useAppDispatch } from '@/redux/hook';
+// import { removeTodo } from '@/redux/features/todoSlice';
+import { useDeleteTodosMutation, useUpdateTodosMutation } from "@/redux/api/api";
 
 type TTodoItem = {
     _id: string;
@@ -17,8 +17,9 @@ type TProp = {
 
 const TodoCard = ({ item }: TProp) => {
     const { _id, title, description, isCompleted, priority } = item;
-    const dispatch = useAppDispatch();
+    // const dispatch = useAppDispatch();
     const [updateTodo] = useUpdateTodosMutation();
+    const [deleteTodo] = useDeleteTodosMutation();
 
     const toggleState = () => {
         // for managing local state
@@ -29,6 +30,10 @@ const TodoCard = ({ item }: TProp) => {
             data: taskData
         }
         updateTodo(options);
+    }
+
+    const handleDelete =()=>{
+        deleteTodo(_id);
     }
 
     return (
@@ -57,7 +62,7 @@ const TodoCard = ({ item }: TProp) => {
 
             <div className="space-x-5">
                 <Button
-                    onClick={() => dispatch(removeTodo(_id))}
+                    onClick={handleDelete}
                     className="delete-btn bg-red-500"
                 >
                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" className="size-5">
