@@ -1,6 +1,7 @@
 import { Button } from "../ui/button";
 import { useAppDispatch } from '@/redux/hook';
-import { removeTodo, toggleComplete } from '@/redux/features/todoSlice';
+import { removeTodo } from '@/redux/features/todoSlice';
+import { useUpdateTodosMutation } from "@/redux/api/api";
 
 type TTodoItem = {
     _id: string;
@@ -17,14 +18,29 @@ type TProp = {
 const TodoCard = ({ item }: TProp) => {
     const { _id, title, description, isCompleted, priority } = item;
     const dispatch = useAppDispatch();
+    const [updateTodo] = useUpdateTodosMutation();
 
     const toggleState = () => {
-        dispatch(toggleComplete(_id))
+        // for managing local state
+        // dispatch(toggleComplete(_id))
+        const taskData = { title, description, priority, isCompleted: !isCompleted }
+        const options = {
+            id: _id,
+            data: taskData
+        }
+        updateTodo(options);
     }
 
     return (
         <div className="bg-white rounded-md flex justify-between items-center p-3 border">
-            <input onChange={toggleState} type="checkbox" name="complete" id="complete" className="mr-4" />
+            <input
+                onChange={toggleState}
+                defaultChecked={isCompleted}
+                type="checkbox"
+                name="complete"
+                id="complete"
+                className="mr-4"
+            />
             <p className="font-semibold flex-1">{title}</p>
             <div className="flex justify-center items-center gap-2 flex-1 px-5">
                 <div className={`size-3 rounded-full 
