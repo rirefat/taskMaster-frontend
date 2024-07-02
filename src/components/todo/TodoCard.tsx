@@ -3,7 +3,7 @@ import { useAppDispatch } from '@/redux/hook';
 import { removeTodo, toggleComplete } from '@/redux/features/todoSlice';
 
 type TTodoItem = {
-    id: string;
+    _id: string;
     title: string;
     description: string;
     isCompleted?: boolean;
@@ -15,11 +15,11 @@ type TProp = {
 
 
 const TodoCard = ({ item }: TProp) => {
-    const { id, title, description, isCompleted, priority } = item;
+    const { _id, title, description, isCompleted, priority } = item;
     const dispatch = useAppDispatch();
 
     const toggleState = () => {
-        dispatch(toggleComplete(id))
+        dispatch(toggleComplete(_id))
     }
 
     return (
@@ -41,7 +41,7 @@ const TodoCard = ({ item }: TProp) => {
 
             <div className="space-x-5">
                 <Button
-                    onClick={() => dispatch(removeTodo(id))}
+                    onClick={() => dispatch(removeTodo(_id))}
                     className="delete-btn bg-red-500"
                 >
                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" className="size-5">

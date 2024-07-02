@@ -26,7 +26,7 @@ const TodoContainer = () => {
             <div className="bg-primary-gradient w-full h-full rounded-md shadow-lg p-[5px]">
                 <div className="bg-white p-5 w-full h-full rounded-md space-y-3 ">
                     {
-                        todos?.data?.length > 0 ? todos?.data?.map((item) => (
+                        todos?.data?.length > 0 ? todos?.data?.map((item: { _id: string; title: string; description: string; isCompleted: boolean ; priority: string; }) => (
                             <TodoCard key={item._id} item={item} />
                         )) : <EmptyCard />
                     }
