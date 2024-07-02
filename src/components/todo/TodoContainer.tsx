@@ -30,7 +30,7 @@ const TodoContainer = () => {
     return (
         <div>
             <div className="flex justify-between mb-4 ">
-                <AddTodoModal />
+                <AddTodoModal/>
                 <TodoFilter priority={priority} setPriority={setPriority} />
             </div>
 
