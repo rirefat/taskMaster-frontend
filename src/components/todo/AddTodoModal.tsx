@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/no-unused-vars */
 import { Button } from "@/components/ui/button"
 import {
   Dialog,
@@ -13,8 +12,8 @@ import {
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 import { useAddTodosMutation } from "@/redux/api/api"
-import { addTodo } from "@/redux/features/todoSlice"
-import { useAppDispatch } from "@/redux/hook"
+// import { addTodo } from "@/redux/features/todoSlice"
+// import { useAppDispatch } from "@/redux/hook"
 import { FormEvent, useState } from "react"
 
 export function AddTodoModal() {
@@ -27,8 +26,8 @@ export function AddTodoModal() {
 
   // for server
   const [addTodo, object] = useAddTodosMutation();
-  // const { isLoading, isError, isSuccess } = object;
-
+  const { isLoading, isError, isSuccess } = object;
+  
   const addTask = (event: FormEvent) => {
     event.preventDefault();
 
@@ -36,7 +35,8 @@ export function AddTodoModal() {
     // dispatch(addTodo({ id, title, description })) 
 
     // for server
-    console.log({ title, description, priority , isCompleted: false})
+    console.log({ title, description, priority , isCompleted: false});
+    console.log(isLoading, isError, isSuccess)
     addTodo({ title, description, priority , isCompleted: false})
   }
 
